@@ -3,8 +3,10 @@ package stripe
 import (
 	"encoding/json"
 	"fmt"
+	"net"
 	"net/url"
 	"strconv"
+	"time"
 )
 
 // LegalEntityType describes the types for a legal entity.
@@ -41,6 +43,13 @@ type AccountParams struct {
 	TransferSchedule                                                       *TransferScheduleParams
 	Managed                                                                bool
 	BankAccount                                                            *BankAccountParams
+	TosAcceptance                                                          *TosAcceptanceParams
+}
+
+type TosAcceptanceParams struct {
+	Date      time.Time
+	Ip        net.IP
+	UserAgent string
 }
 
 // AccountListParams are the parameters allowed during account listing.
@@ -274,6 +283,18 @@ func (l *LegalEntity) AppendDetails(values *url.Values) {
 		if len(owner.Address.Country) > 0 {
 			values.Add(fmt.Sprintf("legal_entity[additional_owners][%v][address][country]", i), owner.Address.Country)
 		}
+	}
+}
+
+func (t *TosAcceptanceParams) AppendDetails(values *url.Values) {
+	if !t.Date.IsZero() {
+		values.Add("tos_acceptance[date]", strconv.FormatInt(t.Date.Unix(), 10))
+	}
+	if t.Ip != nil {
+		values.Add("tos_acceptance[ip]", t.Ip.String())
+	}
+	if t.UserAgent != "" {
+		values.Add("tos_acceptance[user_agent]", t.UserAgent)
 	}
 }
 
