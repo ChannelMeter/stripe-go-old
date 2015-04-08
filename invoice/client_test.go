@@ -3,11 +3,11 @@ package invoice
 import (
 	"testing"
 
-	stripe "github.com/stripe/stripe-go"
-	"github.com/stripe/stripe-go/currency"
-	"github.com/stripe/stripe-go/customer"
-	"github.com/stripe/stripe-go/invoiceitem"
-	. "github.com/stripe/stripe-go/utils"
+	stripe "github.com/channelmeter/stripe-go"
+	"github.com/channelmeter/stripe-go/currency"
+	"github.com/channelmeter/stripe-go/customer"
+	"github.com/channelmeter/stripe-go/invoiceitem"
+	. "github.com/channelmeter/stripe-go/utils"
 )
 
 func init() {

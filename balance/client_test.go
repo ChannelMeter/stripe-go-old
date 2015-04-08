@@ -3,10 +3,10 @@ package balance
 import (
 	"testing"
 
-	stripe "github.com/stripe/stripe-go"
-	"github.com/stripe/stripe-go/charge"
-	"github.com/stripe/stripe-go/currency"
-	. "github.com/stripe/stripe-go/utils"
+	stripe "github.com/channelmeter/stripe-go"
+	"github.com/channelmeter/stripe-go/charge"
+	"github.com/channelmeter/stripe-go/currency"
+	. "github.com/channelmeter/stripe-go/utils"
 )
 
 func init() {
@@ -41,7 +41,7 @@ func TestBalanceGetTx(t *testing.T) {
 	chargeParams := &stripe.ChargeParams{
 		Amount:   1002,
 		Currency: currency.USD,
-		Desc: "charge transaction",
+		Desc:     "charge transaction",
 	}
 	chargeParams.SetSource(&stripe.CardParams{
 		Number: "378282246310005",

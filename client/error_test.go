@@ -3,7 +3,7 @@ package client
 import (
 	"testing"
 
-	. "github.com/stripe/stripe-go"
+	. "github.com/channelmeter/stripe-go"
 )
 
 func TestErrors(t *testing.T) {

@@ -3,13 +3,13 @@ package sub
 import (
 	"testing"
 
-	stripe "github.com/stripe/stripe-go"
-	"github.com/stripe/stripe-go/coupon"
-	"github.com/stripe/stripe-go/currency"
-	"github.com/stripe/stripe-go/customer"
-	"github.com/stripe/stripe-go/discount"
-	"github.com/stripe/stripe-go/plan"
-	. "github.com/stripe/stripe-go/utils"
+	stripe "github.com/channelmeter/stripe-go"
+	"github.com/channelmeter/stripe-go/coupon"
+	"github.com/channelmeter/stripe-go/currency"
+	"github.com/channelmeter/stripe-go/customer"
+	"github.com/channelmeter/stripe-go/discount"
+	"github.com/channelmeter/stripe-go/plan"
+	. "github.com/channelmeter/stripe-go/utils"
 )
 
 func init() {

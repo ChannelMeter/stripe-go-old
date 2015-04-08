@@ -3,10 +3,10 @@ package bitcointransaction
 import (
 	"testing"
 
-	stripe "github.com/stripe/stripe-go"
-	"github.com/stripe/stripe-go/bitcoinreceiver"
-	"github.com/stripe/stripe-go/currency"
-	. "github.com/stripe/stripe-go/utils"
+	stripe "github.com/channelmeter/stripe-go"
+	"github.com/channelmeter/stripe-go/bitcoinreceiver"
+	"github.com/channelmeter/stripe-go/currency"
+	. "github.com/channelmeter/stripe-go/utils"
 )
 
 func init() {
