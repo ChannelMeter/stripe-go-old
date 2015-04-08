@@ -42,12 +42,16 @@ type BankAccountList struct {
 
 // AppendDetails adds the bank account's details to the query string values.
 func (b *BankAccountParams) AppendDetails(values *url.Values) {
-	values.Add("bank_account[country]", b.Country)
-	values.Add("bank_account[routing_number]", b.Routing)
-	values.Add("bank_account[account_number]", b.Account)
+	if len(b.Token) > 0 {
+		values.Add("bank_account", b.Token)
+	} else {
+		values.Add("bank_account[country]", b.Country)
+		values.Add("bank_account[routing_number]", b.Routing)
+		values.Add("bank_account[account_number]", b.Account)
 
-	if len(b.Currency) > 0 {
-		values.Add("bank_account[currency]", b.Currency)
+		if len(b.Currency) > 0 {
+			values.Add("bank_account[currency]", b.Currency)
+		}
 	}
 }
 
