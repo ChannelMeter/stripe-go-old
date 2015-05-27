@@ -77,6 +77,7 @@ type PaymentSourceType string
 const (
 	PaymentSourceBitcoinReceiver PaymentSourceType = "bitcoin_receiver"
 	PaymentSourceCard            PaymentSourceType = "card"
+	PaymentSourceBank            PaymentSourceType = "bank_account"
 )
 
 // PaymentSource describes the payment source used to make a Charge.
@@ -87,6 +88,7 @@ type PaymentSource struct {
 	ID              string            `json:"id"`
 	Card            *Card             `json:"-"`
 	BitcoinReceiver *BitcoinReceiver  `json:"-"`
+	BankAccount     *BankAccount      `json:"-"`
 }
 
 // SourceList is a list object for cards.
@@ -129,6 +131,8 @@ func (s *PaymentSource) UnmarshalJSON(data []byte) error {
 			json.Unmarshal(data, &s.BitcoinReceiver)
 		case PaymentSourceCard:
 			json.Unmarshal(data, &s.Card)
+		case PaymentSourceBank:
+			json.Unmarshal(data, &s.BankAccount)
 		}
 	} else {
 		// the id is surrounded by "\" characters, so strip them
@@ -163,6 +167,14 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 			Type:     s.Type,
 			Customer: s.Card.Customer.ID,
 			Card:     s.Card,
+		}
+	case PaymentSourceBank:
+		target = struct {
+			Type PaymentSourceType `json:"object"`
+			*BankAccount
+		}{
+			Type:        s.Type,
+			BankAccount: s.BankAccount,
 		}
 	default:
 		target = source(*s)
