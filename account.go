@@ -47,9 +47,9 @@ type AccountParams struct {
 }
 
 type TosAcceptanceParams struct {
-	Date      time.Time
-	Ip        net.IP
-	UserAgent string
+	Date      time.Time `json:"date"`
+	Ip        net.IP    `json:"ip"`
+	UserAgent string    `json:"user_agent"`
 }
 
 // AccountListParams are the parameters allowed during account listing.
@@ -97,6 +97,11 @@ type Account struct {
 	LegalEntity      *LegalEntity      `json:"legal_entity"`
 	TransferSchedule *TransferSchedule `json:"transfer_schedule"`
 	BankAccounts     *BankAccountList  `json:"bank_accounts"`
+	TosAcceptance    *struct {
+		Date      int64  `json:"date"`
+		IP        string `json:"ip"`
+		UserAgent string `json:"user_agent"`
+	} `json:"tos_acceptance"`
 }
 
 // LegalEntity is the structure for properties related to an account's legal state.
