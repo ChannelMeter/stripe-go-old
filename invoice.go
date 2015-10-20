@@ -10,11 +10,11 @@ type InvoiceLineType string
 // For more details see https://stripe.com/docs/api#create_invoice, https://stripe.com/docs/api#update_invoice.
 type InvoiceParams struct {
 	Params
-	Customer             string
-	Desc, Statement, Sub string
-	Fee                  uint64
-	Closed, Forgive      bool
-	TaxPercent           float64
+	Customer                string
+	Desc, Statement, Sub    string
+	Fee                     uint64
+	Closed, Forgive, Opened bool
+	TaxPercent              float64
 }
 
 // InvoiceListParams is the set of parameters that can be used when listing invoices.

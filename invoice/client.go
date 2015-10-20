@@ -135,6 +135,10 @@ func (c Client) Update(id string, params *stripe.InvoiceParams) (*stripe.Invoice
 			body.Add("closed", strconv.FormatBool(true))
 		}
 
+		if params.Opened {
+			body.Add("closed", strconv.FormatBool(false))
+		}
+
 		if params.Forgive {
 			body.Add("forgiven", strconv.FormatBool(true))
 		}
