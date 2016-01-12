@@ -74,6 +74,10 @@ func (c Client) New(params *stripe.TransferParams) (*stripe.Transfer, error) {
 		body.Add("source_transaction", params.SourceTx)
 	}
 
+	if len(params.SourceType) > 0 {
+		body.Add("source_type", params.SourceType)
+	}
+
 	if params.Fee > 0 {
 		body.Add("application_fee", strconv.FormatUint(params.Fee, 10))
 	}

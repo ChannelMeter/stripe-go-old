@@ -59,10 +59,17 @@ type Transaction struct {
 	Recipient  string            `json:"recipient"`
 }
 
+type SourceTypes struct {
+	Card            int64 `json:"card"`
+	BankAccount     int64 `json:"bank_account"`
+	BitcoinReceiver int64 `json:"bitcoin_receiver"`
+}
+
 // Amount is a structure wrapping an amount value and its currency.
 type Amount struct {
-	Value    int64    `json:"amount"`
-	Currency Currency `json:"currency"`
+	Value       int64       `json:"amount"`
+	Currency    Currency    `json:"currency"`
+	SourceTypes SourceTypes `json:"source_types"`
 }
 
 // TxFee is a structure that breaks down the fees in a transaction.
